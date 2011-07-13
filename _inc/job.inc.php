@@ -57,15 +57,6 @@ class jobApps {
 		$description = $core->clean( $description );
 		
 		try {
-			
-			// So now we check for blank fields
-			if ( !$position or !$description ) {
-			
-				// The position and description fields were left blank, so we throw an exception
-				throw new Exception( "All fields are required." );
-				
-			}
-			
 			// All done, so we execute the query (making the form non-active by default)
 			$query = $db->query( "INSERT INTO jobapps_forms (id, position, description, active) VALUES (NULL, '{$position}', '{$description}', '0')" );
 	
@@ -160,7 +151,7 @@ class jobApps {
 			if ( $form_elements['element_type'] == "text" ) {
 
 				// We need a text element, so first we create a label for the element
-				echo "<label for=\"{$form_elements['element_id']}\">{$form_elements['element_label']}</label>";
+				echo "<label for=\"{$form_elements['element_id']}\">{$form_elements['element_label']}:</label>";
 
 				// Then we return the actual field
 				echo "<input type=\"text\" name=\"{$form_elements['element_id']}\" id=\"{$form_elements['element_id']}\" maxlength=\"255\" />";
@@ -173,7 +164,7 @@ class jobApps {
 				$select_values = explode( ",", $form_elements['element_values'] );
 
 				// Now that's done, we need to return them, but first, the label!
-				echo "<label for=\"{$form_elements['element_id']}\">{$form_elements['element_label']}</label>";
+				echo "<label for=\"{$form_elements['element_id']}\">{$form_elements['element_label']}:</label>";
 
 				// We also return some <select> HTML
 				echo "<select name=\"{$form_elements['element_id']}\" id=\"{$form_elements['element_id']}\">";
@@ -197,7 +188,7 @@ class jobApps {
 				$select_values = explode( ",", $form_elements['element_values'] );
 
 				// Now that's done, we need to return them, but first, the label!
-				echo "<label for=\"{$form_elements['element_id']}\">{$form_elements['element_label']}</label>";
+				echo "<label for=\"{$form_elements['element_id']}\">{$form_elements['element_label']}:</label>";
 
 				// And now to return the values of the radio buttons
 				foreach( $select_values as $key => $value ) {
@@ -212,7 +203,7 @@ class jobApps {
 			if ( $form_elements['element_type'] == "textbox" ) {
 
 				// First, the label!
-				echo "<label for=\"{$form_elements['element_id']}\">{$form_elements['element_label']}</label>";
+				echo "<label for=\"{$form_elements['element_id']}\">{$form_elements['element_label']}:</label>";
 
 				// And now to draw up the textbox
 				echo "<textarea name=\"{$form_elements['element_id']}\" id=\"{$form_elements['element_id']}\" rows=\"5\"></textarea>";
