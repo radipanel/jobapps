@@ -3,42 +3,6 @@
 class jobApps {
 
 	/*
-	 * installScript 	- checks for the required database tables and fields and creates if missing.
-	 * @global $db		- $db from /_inc/db.inc.php
-	 * @param		- no parameters required. 
-	 * @return $q		- the result of the execution.
-	 */
-	public function installScript() {
-
-		// Declare our global variables
-		global $db;
-
-		// Thanks to "CREATE TABLE IF NOT EXISTS" we don't have to do any checking, we can just execute the required queries ;)
-		$jobapps_forms = $db->query( "CREATE TABLE IF NOT EXISTS `jobapps_forms` () ENGINE=MyISAM  DEFAULT CHARSET=latin1;" );
-		$jobapps_form_elements = $db->query( "CREATE TABLE IF NOT EXISTS `jobapps_form_elements` () ENGINE=MyISAM  DEFAULT CHARSET=latin1;" );
-		$jobapps_form_submissions = $db->query( "CREATE TABLE IF NOT EXISTS `jobapps_form_submissions` () ENGINE=MyISAM  DEFAULT CHARSET=latin1;" );
-	
-	}
-
-	/*
-	 * unintallScript 	- removes all tables associated with this addon
-	 * @global $db		- $db from /_inc/db.inc.php
-	 * @param		- no parameters required. 
-	 * @return $q		- the result of the execution.
-	 */
-	public function uninstallScript() {
-		
-		// Declare our global variables
-		global $db;
-
-		// Thanks to "CREATE TABLE IF NOT EXISTS" we don't have to do any checking, we can just execute the required queries ;)
-		$jobapps_forms = $db->query( "DROP TABLE IF EXISTS `jobapps_forms`" );
-		$jobapps_form_elements = $db->query( "DROP TABLE IF EXISTS `jobapps_form_elements`" );
-		$jobapps_form_submissions = $db->query( "DROP TABLE IF EXISTS `jobapps_form_submissions`" );
-
-	}
-	
-	/*
 	 * createForm	 	- creates a form
 	 * @global $db		- $db from /_inc/db.inc.php
 	 * @global $core	- $core from /_inc/core.inc.php
